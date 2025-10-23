@@ -41,6 +41,7 @@ const config: StorybookConfig = {
 				},
 			},
 		},
+		"@storybook/addon-mcp",
 	],
 	async viteFinal(config: UserConfig) {
 		return mergeConfig(config, {
