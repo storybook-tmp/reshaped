@@ -1,3 +1,5 @@
+import storybook from "eslint-plugin-storybook";
+
 import { defineConfig, globalIgnores } from "eslint/config";
 import esConfig from "@eslint/js";
 import tsConfig from "typescript-eslint";
@@ -19,4 +21,5 @@ export default defineConfig([
 			"react-hooks/exhaustive-deps": "error",
 		},
 	},
+	...storybook.configs["flat/recommended"],
 ]);
