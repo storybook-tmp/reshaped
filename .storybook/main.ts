@@ -1,11 +1,7 @@
-import { fileURLToPath } from "node:url";
-import path, { dirname } from "path";
+import path from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { mergeConfig, UserConfig } from "vite";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
 	framework: "@storybook/react-vite",
@@ -40,7 +36,6 @@ const config: StorybookConfig = {
 				},
 			},
 		},
-		"@storybook/addon-mcp",
 	],
 	async viteFinal(config: UserConfig) {
 		return mergeConfig(config, {
