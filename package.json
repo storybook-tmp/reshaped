@@ -109,7 +109,6 @@
 		"@size-limit/preset-big-lib": "11.2.0",
 		"@storybook/addon-a11y": "10.5.0-alpha.3",
 		"@storybook/addon-docs": "10.5.0-alpha.3",
-		"@storybook/addon-mcp": "0.6.0",
 		"@storybook/addon-vitest": "10.5.0-alpha.3",
 		"@storybook/react-vite": "10.5.0-alpha.3",
 		"@testing-library/user-event": "14.6.1",
