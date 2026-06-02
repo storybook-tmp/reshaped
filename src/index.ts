@@ -226,8 +226,3 @@ export { TrapFocus } from "utilities/a11y";
  */
 export type { ReshapedConfig } from "types/config";
 export type { Responsive, Attributes, ColorMode } from "types/global";
-
-/**
- * Dev utilities
- */
-export { default as Placeholder } from "utilities/storybook/Placeholder";

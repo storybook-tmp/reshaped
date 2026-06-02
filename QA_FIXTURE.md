@@ -1,19 +1,19 @@
 # Reshaped ADE QA Fixture
 
-Branch: `main`
+Branch: `qa/no-storybook`
 
-Purpose: primary ADE QA target for the latest Storybook 10 alpha with the MCP addon enabled.
+Purpose: Reshaped control target with Storybook removed entirely.
 
 Expected state:
 
-- Storybook packages use `10.5.0-alpha.3`.
-- `@storybook/addon-mcp` is installed at `0.6.0`.
-- `.storybook/main.ts` includes `@storybook/addon-mcp` in the `addons` array.
+- No `.storybook` directory.
+- No `*.stories.tsx` files.
+- No `src/utilities/storybook` utilities.
+- No `tsconfig.stories.json`.
+- No Storybook, MCP addon, Storybook Vitest addon, Storybook eslint plugin, or Chromatic packages.
+- No Storybook, Chromatic, visual-regression, or Storybook browser-test scripts in `package.json`.
 
 Lightweight verification run on June 2, 2026:
 
 - `CI=true npx -y pnpm@10.19.0 install --frozen-lockfile`
-- `CI=true STORYBOOK_DISABLE_TELEMETRY=1 npx -y pnpm@10.19.0 exec storybook dev -p 6106 --ci --no-open --exact-port --disable-telemetry`
-
-The Storybook dev server reached the ready state on `http://localhost:6106/`.
-Port `3001` was not used during verification because it was already occupied by a local `next-server` process.
+- `npx -y pnpm@10.19.0 exec vitest run --project=unit`
