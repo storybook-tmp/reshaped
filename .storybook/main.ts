@@ -40,6 +40,7 @@ const config: StorybookConfig = {
 				},
 			},
 		},
+		"@storybook/addon-review",
 		"@storybook/addon-mcp",
 	],
 	async viteFinal(config: UserConfig) {

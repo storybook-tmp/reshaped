@@ -1,19 +1,29 @@
-# Reshaped ADE QA Fixture
+# Reshaped Agentic Review QA Fixture
 
 Branch: `main`
 
-Purpose: primary ADE QA target for the latest Storybook 10 alpha with the MCP addon enabled.
+Purpose: primary Agentic Review QA target for the PR canary from the
+Chromatic QA guide, with Storybook Review and the MCP addon enabled.
 
 Expected state:
 
-- Storybook packages use `10.5.0-alpha.3`.
-- `@storybook/addon-mcp` is installed at `0.6.0`.
-- `.storybook/main.ts` includes `@storybook/addon-mcp` in the `addons` array.
+- Storybook packages use `0.0.0-pr-35110-sha-eeba66b8`.
+- `@storybook/addon-review` uses `0.0.0-pr-35110-sha-eeba66b8`.
+- `@storybook/addon-mcp` uses `https://pkg.pr.new/storybookjs/mcp/@storybook/addon-mcp@559d54d`.
+- `.storybook/main.ts` includes both `@storybook/addon-review` and
+  `@storybook/addon-mcp` in the `addons` array.
+- This branch is the happy-path fixture for manual Claude and Codex QA.
 
-Lightweight verification run on June 2, 2026:
+Canary setup commands:
+
+- `npx -y storybook@0.0.0-pr-35110-sha-eeba66b8 upgrade --yes --package-manager pnpm --disable-telemetry`
+- `npx -y pnpm@10.19.0 add -D -w @storybook/addon-review@0.0.0-pr-35110-sha-eeba66b8 @storybook/addon-mcp@https://pkg.pr.new/storybookjs/mcp/@storybook/addon-mcp@559d54d`
+
+Lightweight verification run on June 22, 2026:
 
 - `CI=true npx -y pnpm@10.19.0 install --frozen-lockfile`
 - `CI=true STORYBOOK_DISABLE_TELEMETRY=1 npx -y pnpm@10.19.0 exec storybook dev -p 6106 --ci --no-open --exact-port --disable-telemetry`
 
-The Storybook dev server reached the ready state on `http://localhost:6106/`.
-Port `3001` was not used during verification because it was already occupied by a local `next-server` process.
+Expected result: the Storybook dev server reaches the ready state, the MCP
+runtime record reports ready, and Agentic Review can be exercised through the
+real ADE flow.
