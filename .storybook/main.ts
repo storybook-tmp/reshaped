@@ -21,6 +21,9 @@ const config: StorybookConfig = {
 			propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
 		},
 	},
+	features: {
+		experimentalReactComponentMeta: true,
+	},
 	core: {
 		builder: {
 			name: "@storybook/builder-vite",
