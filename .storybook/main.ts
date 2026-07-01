@@ -1,3 +1,4 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
 import { fileURLToPath } from "node:url";
 import path, { dirname } from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
@@ -40,7 +41,6 @@ const config: StorybookConfig = {
 				},
 			},
 		},
-		"@storybook/addon-review",
 		"@storybook/addon-mcp",
 	],
 	async viteFinal(config: UserConfig) {
@@ -50,6 +50,9 @@ const config: StorybookConfig = {
 				postcss: path.resolve(__dirname),
 			},
 			build: {
+				// Override the es2015 library target from vite.config.mjs: stories using
+				// mount() require native async/await (es2017+) to be detected by Storybook.
+				target: "es2022",
 				rollupOptions: {
 					logLevel: "silent",
 					onwarn: (warning: { code: string }, warn: (warning: { code: string }) => void) => {

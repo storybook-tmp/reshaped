@@ -1,6 +1,9 @@
 allowBuilds:
   esbuild: false
   lefthook: false
+# @storybook/addon-mcp preview builds from pkg.pr.new depend on @storybook/mcp
+# from pkg.pr.new as well, so pnpm needs to allow that preview subdependency.
+blockExoticSubdeps: false
 ignoredBuiltDependencies:
   - esbuild
   - lefthook
